@@ -1,0 +1,15 @@
+GET http://localhost:3000/posts
+
+###
+GET http://localhost:3000/posts/5
+
+###
+
+POST http://localhost:3000/posts
+Content-Type: application/json
+
+{
+    "title" : "Hello",
+    "name" : "Hello",
+    "body" : "Hello"
+}

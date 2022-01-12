@@ -3,16 +3,15 @@ const SQL = require('sql-template-strings');
 
 class Post {
     constructor(data) {
+        this.title = data.title
+        this.name = data.name
         this.body = data.body
-        this.username = data.username
     }
 
     static get all(){
         return new Promise(async (res, rej) => {
             try {
-                let result = await db.run(SQL`SELECT posts.*, users.username as username
-                                                    FROM posts 
-                                                    JOIN users ON posts.user_id = users.id;`);
+                let result = await db.run(SQL`SELECT * FROM posts`  );
                 let posts = result.rows.map(r => new Post(r))
                 res(posts)
             } catch (err) {

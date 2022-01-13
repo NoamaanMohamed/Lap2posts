@@ -4,6 +4,7 @@ const { post } = require('../controllers/posts');
 
 class Post {
     constructor(data) {
+        this.id = data.id
         this.title = data.title
         this.name = data.name
         this.body = data.body
@@ -33,7 +34,7 @@ class Post {
         });
     };
 
-    static create({title,name,body}){
+    static create(title,name,body){
         return new Promise (async (resolve, reject) => {
             try {
                 let postData = await db.run('INSERT INTO posts (title, name, body) VALUES ($1,$2,$3) RETURNING *;', [ title,name,body ]);
